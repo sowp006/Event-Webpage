@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TechCon 2025</title>
+  <link rel="icon" href="event.jpg">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: white;
+      color: #333;
+    }
+
+    .gradient-text {
+      background: linear-gradient(45deg, #00b4d8, #90e0ef);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #9616e6;
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav h1 {
+      color: #fff;
+      font-size: 1.8rem;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    .hero-slideshow {
+      position: relative;
+      height: 100vh;
+      overflow: hidden;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-slideshow::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .hero-slideshow::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+      animation: slideshow 20s infinite ease-in-out;
+    }
+
+    @keyframes slideshow {
+      0% { background-image: url('img1.jpg'); }
+      25% { background-image: url('img2.jpg'); }
+      50% { background-image: url('img3.jpg'); }
+      75% { background-image: url('img2.jpg'); }
+      100% { background-image: url('img1.jpg'); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100vh;
+      width: 100%;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .hero-content h2 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+    }
+
+    .cta {
+      background: #ffdd00;
+      color: #000;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .cta:hover {
+      background: #ffe64d;
+    }
+      @keyframes fade-in-up {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-fade-in-up {
+        animation: fade-in-up 1s ease-out both;
+      }
+
+    /* ✨ Scroll Indicator */
+    #scroll-indicator {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 5px;
+      background: #00b4d8;
+      z-index: 100;
+    }
+   
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: #0077b6;
+    }
+
+    /* 🎯 Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    /* Section */
+    .speakers-section {
+      padding: 80px 20px;
+      text-align: center;
+      background-color: #f6f8fc;
+    }
+
+    .speakers-section h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 60px;
+    }
+
+    /* Grid Layout */
+    .speakers-grid {
+       display: flex;
+       flex-wrap: wrap;
+       justify-content: center;
+       gap: 30px;
+       max-width: 1200px;
+       margin: 0 auto;
+    }
+
+    /* Speaker Card */
+    .speaker-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px 25px;
+      width: calc(25% - 30px); /* 4 cards in a row with spacing */
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+      text-align: center;
+  }
+    
+
+    .speaker-card:hover {
+      transform: translateY(-8px);
+    }
+
+    /* Speaker Image */
+    .speaker-card img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      margin-bottom: 20px;
+      box-shadow: 0 0 0 5px rgba(168, 85, 247, 0.5); /* purple glow */
+    }
+
+    /* Speaker Name */
+    .speaker-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 8px;
+    }
+
+    /* Title and Org */
+    .speaker-card .title {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 4px;
+    }
+
+    .speaker-card .org {
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+
+    section {
+      padding: 60px 30px;
+      text-align: center;
+    }
+
+    section h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #9616e6;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      align-items: stretch;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 260px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .speaker-img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      box-shadow: 0 0 12px #e0b3ff;
+    }
+
+    .sponsors-section {
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .sponsors-section h2 {
+      color: purple;
+      font-size: 2.5rem;
+      margin-bottom: 40px;
+    }
+    .sponsors-logos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 50px;
+    }
+    .sponsor {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .sponsor img {
+      width: 100px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    .sponsor span {
+      font-weight: 500;
+    }
+
+    footer {
+      background: #000;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+        /* CSS */
+    .register-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .register-btn {
+      background-color: #ff6b00;
+      color: white;
+      padding: 15px 30px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .register-btn:hover {
+      background-color: #e65c00;
+    }
+
+        /* CSS */
+    .timer-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    #countdown h2 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    #timer {
+      font-size: 28px;
+      color: #ff6b00;
+      font-family: 'Courier New', monospace;
+    }
+
+
+      .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #330867;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background-color: #7200b8;
+    }
+
+   
+    @media (max-width: 768px) {
+      .hero-content {
+        height: auto;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .speaker-card {
+        width: calc(33.33% - 30px); /* 3 cards per row */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .speaker-card {
+        width: calc(50% - 30px); /* 2 cards per row */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .speaker-card {
+        width: 100%; /* Full width for small screens */
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <h1><a href="index.html" style="color: white; text-decoration: none;">👩🏻‍💻📓✍🏻💡✮</a></h1>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="speakers.html">Speakers</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="register.html">Register</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<section class="hero-slideshow">
+  <div class="hero-content">
+    <div>
+      <h2 class="gradient-text">Welcome to TechCon 2025</h2>
+      <p>Where Code Meets Culture, and Ideas Spark Empires — Welcome to the Future.</p>
+      <p>Innovate | Connect | Inspire</p>
+    </div>
+    <a href="register.html" class="btn">Join the Revolution</a>
+  </div>
+</section>
+
+<section id="about" class="content-section" data-aos="fade-up">
+  <p>
+    <strong>TechCon 2025</strong> is not just another tech conference — it’s where innovation, networking, and learning collide.
+    Bringing together the brightest minds from around the globe, we offer a dynamic platform for developers, designers,
+    entrepreneurs, and tech enthusiasts to exchange ideas, attend immersive workshops, and connect with leaders shaping the future.
+  </p>
+  <div class="about-highlights grid" style="margin-top: 30px;">
+    <div data-aos="fade-up" data-aos-delay="100" class="card">
+      <h3>🌐 Global Reach</h3>
+      <p>Meet professionals and students from 40+ countries and engage in cultural and technological exchange.</p>
+    </div>
+    <div data-aos="fade-up" data-aos-delay="200" class="card">
+      <h3>🔧 Hands-On Workshops</h3>
+      <p>Participate in interactive sessions on AI, Blockchain, Cybersecurity, and more — led by top industry experts.</p>
+    </div>
+    <div data-aos="fade-up" data-aos-delay="300" class="card">
+      <h3>🚀 Startup Pavilion</h3>
+      <p>Discover rising startups, pitch your ideas, or find your next tech co-founder in our buzzing startup corner.</p>
+    </div>
+    <div data-aos="fade-up" data-aos-delay="400" class="card">
+      <h3>🎙️ Inspiring Keynotes</h3>
+      <p>Be inspired by speakers from Google, Microsoft, OpenAI, and other tech giants as they share future roadmaps.</p>
+    </div>
+  </div>
+  <div style="margin-top: 40px;" data-aos="fade-up" data-aos-delay="500">
+    <img src="tech event banner.png" alt="Tech Event Banner"
+         style="width: 50%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+  </div>
+</section>
+   
+<main class="px-4 py-12 space-y-20 max-w-7xl mx-auto">
+
+  <!-- Coding Contest Section -->
+  <section class="text-center space-y-4 animate-fade-in-up">
+    <h2 class="text-3xl font-bold">🔥 Live Coding Contest</h2>
+    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+      Show off your skills in our thrilling coding competition! Solve real-world challenges, climb the leaderboard, and win exciting prizes.
+    </p>
+  </section>
+
+  <!-- Animated Stats Section -->
+  <section class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center animate-fade-in-up">
+    <div>
+      <p class="text-4xl font-extrabold text-blue-600 counter" data-target="500">0</p>
+      <p class="text-gray-600">Participants</p>
+    </div>
+    <div>
+      <p class="text-4xl font-extrabold text-blue-600 counter" data-target="30">0</p>
+      <p class="text-gray-600">Speakers</p>
+    </div>
+    <div>
+      <p class="text-4xl font-extrabold text-blue-600 counter" data-target="50">0</p>
+      <p class="text-gray-600">Sessions</p>
+    </div>
+  </section>
+</main>
+
+    <!-- Centered Register Button -->
+<div class="register-container">
+  <a href="register.html" class="register-btn">Register Now</a>
+</div>
+
+  
+<!-- Centered Countdown Timer -->
+<div class="timer-container">
+  <div id="countdown">
+    <h2>Contest Starts In:</h2>
+    <div id="timer">00d 00h 00m 00s</div>
+  </div>
+</div>
+
+
+  <script>
+    // ✨ Scroll Indicator Script
+    window.onscroll = function () {
+      const scrollIndicator = document.getElementById("scroll-indicator");
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      scrollIndicator.style.width = scrolled + "%";
+    };
+
+    // ⏱️ Countdown Timer Script
+    const countdownElement = document.getElementById("countdown");
+    const eventDate = new Date("2025-09-01T09:00:00").getTime();
+
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance < 0) {
+        clearInterval(countdown);
+        countdownElement.innerHTML = "🎉 TechCon 2025 is live!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s until TechCon 2025`;
+    }, 1000);
+  </script>
+</body>
+
+<section id="speakers" data-aos="fade-up">
+  <h3>Our Speakers</h3>
+  <div class="grid">
+    <div class="card">
+      <img src="Rahul.png" alt="Rahul Desai" class="speaker-img" />
+      <h4>Prof.Rahul Desai</h4>
+      <p>Quantum Computing Expert</p>
+      <p>IbM Research</p>
+    </div>
+
+    <div class="card">
+      <img src="Alex.png" alt="Alex Martinez" class="speaker-img" />
+      <h4>Alex Martinez</h4>
+      <p>Principal Cloud Architect</p>
+      <p>Amazon Web Services</p>    
+    </div>
+
+    <div class="card">
+      <img src="Emily.png" alt="Emily Zhang" class="speaker-img" />
+      <h4>Emily Zhang</h4>
+      <p>Director of Cybersecurity</p>
+      <p>Palo Alto networks</p>
+    </div>
+  </div>
+  <a class="btn" href="speakers.html">See All Speakers</a>
+</section>
+
+
+<body>
+
+<section class="sponsors-section">
+  <h2>Our Sponsors</h2>
+  <div class="sponsors-logos">
+    <div class="sponsor">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" alt="Microsoft Logo">
+      <span>Microsoft</span>
+    </div>
+    <div class="sponsor">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS Logo">
+      <span>Amazon AWS</span>
+    </div>
+    <div class="sponsor">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo">
+      <span>Google</span>
+    </div>
+  </div>
+</section>
+
+
+<section id="contact" data-aos="fade-up">
+  <h3>Contact Us</h3>
+  <div class="content">
+    Have questions? Reach out via our <a href="contact.html" style="color: #9616e6;">Contact page</a> or email us at
+    <b>info@techcon2025.com</b>.
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 TechCon. All rights reserved.
+</footer>
+<script>
+// Simple counter animation
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.counter').forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const increment = target / 100;
+
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(updateCount, 30);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    updateCount();
+  });
+});
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TechCon 2025 - Speakers</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    nav {
+      background-color: #9616e6;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #9616e6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .intro p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h3 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .card-content p {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .see-all {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .see-all button {
+      background: #9616e6;
+      border: none;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .see-all button:hover {
+      background: #7d13c4;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+      color: #fff;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <h1 style="color: white;">TechCon 2025</h1>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="speakers.html">Speakers</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="register.html">Register</a>
+  </div>
+</nav>
+
+<div class="container" data-aos="fade-up">
+  <h2>Meet Our Esteemed Speakers</h2>
+  <div class="intro">
+    <p>
+      TechCon 2025 brings together thought leaders and pioneers from the fields of AI, cybersecurity, robotics, and software architecture. These are the people shaping the future of technology—one innovation at a time.
+    </p>
+  </div>
+
+  <div class="speakers-grid" data-aos="fade-up" data-aos-delay="200">
+    <div class="card">
+      <img src="David.png" alt="Speaker 1">
+      <div class="card-content">
+        <h3>Dr. David Chen</h3>
+        <p>AI Researcher at DeepMind. Focused on machine learning ethics and explainability in AI systems.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="Alex.png" alt="Speaker 2">
+      <div class="card-content">
+        <h3>Alex Martinez</h3>
+        <p>Cloud Infrastructure Expert, Google Cloud. Specializing in scalable architectures and DevOps workflows.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="Emily.png" alt="Speaker 3">
+      <div class="card-content">
+        <h3>Dr. Emily Zhang</h3>
+        <p>Cybersecurity Director, MIT. Works on zero-trust networks and privacy-respecting protocols.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="Rahul.png" alt="Speaker 4">
+      <div class="card-content">
+        <h3>Prof.Rahul Desai</h3>
+        <p>Founder, RoboticSoft. Passionate about human-robot interaction and embedded AI systems.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="see-all" data-aos="zoom-in" data-aos-delay="300">
+    <button onclick="alert('Redirecting to all teachers...')">See All Teachers</button>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 TechCon. All rights reserved.
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+</body>
+</html>

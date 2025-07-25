@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TechCon 2025 Registration</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      z-index: -1;
+    }
+
+    .card-container {
+      perspective: 1000px;
+    }
+
+    .flip-card {
+      background: transparent;
+      width: 400px;
+      height: 500px;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+
+    .card-container.flipped .flip-card {
+      transform: rotateY(180deg);
+    }
+
+    .card-side {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      animation: fadeIn 1s ease-in;
+    }
+
+    .card-front {
+      z-index: 2;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+    }
+
+    h2 {
+      text-align: center;
+      color: #ffdd57;
+      margin-bottom: 20px;
+    }
+
+    input, select {
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+    }
+
+    input[type="submit"] {
+      background-color: #ffdd57;
+      color: #333;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    input[type="submit"]:hover {
+      transform: scale(1.05);
+    }
+
+    .message {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .shake {
+      animation: shake 0.5s;
+    }
+
+    .bounce {
+      animation: bounce 0.6s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      50% { transform: translateX(8px); }
+      75% { transform: translateX(-8px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes bounce {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <div class="card-container" id="card-container">
+    <div class="flip-card" id="flip-card">
+      <div class="card-side card-front" id="form-card">
+        <h2>Register for TechCon 2025</h2>
+        <form id="regForm">
+          <input type="text" id="name" placeholder="Full Name" required />
+          <input type="email" id="email" placeholder="Email Address" required />
+          <input type="tel" id="phone" placeholder="Phone Number" pattern="[0-9]{10}" required />
+          <select id="track" required>
+            <option value="">Select Track</option>
+            <option>AI & Innovation</option>
+            <option>Hackathons & Debates</option>
+            <option>Future of Tech</option>
+          </select>
+          <input type="submit" value="Submit" />
+          <div class="message" id="formMsg"></div>
+        </form>
+      </div>
+      <div class="card-side card-back">
+        <h2>🎉 Registration Successful!</h2>
+        <p style="text-align:center;">Thank you for registering for TechCon 2025.<br>We’ll be in touch soon.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById("regForm");
+    const msg = document.getElementById("formMsg");
+    const cardContainer = document.getElementById("card-container");
+    const flipCard = document.getElementById("form-card");
+
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const track = document.getElementById("track").value;
+
+      if (!name || !email || !phone || !track) {
+        msg.textContent = "Please fill in all fields.";
+        flipCard.classList.remove("bounce");
+        flipCard.classList.add("shake");
+        setTimeout(() => flipCard.classList.remove("shake"), 500);
+      } else {
+        msg.textContent = "";
+        flipCard.classList.remove("shake");
+        flipCard.classList.add("bounce");
+        setTimeout(() => {
+          cardContainer.classList.add("flipped");
+        }, 600);
+      }
+    });
+  </script>
+
+  <!-- Particles.js Library -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#ffffff" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: false },
+        size: { value: 3, random: true },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#ffffff",
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: "none",
+          straight: false,
+          out_mode: "out"
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" },
+          resize: true
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+</body>
+</html>

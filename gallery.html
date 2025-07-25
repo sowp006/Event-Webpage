@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TechCon 2025 - Video Gallery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- AOS Animation CDN -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        nav {
+            background-color: #9616e6;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+        }
+
+        header {
+            background-color: #4a148c;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        .intro {
+            text-align: center;
+            margin: 30px auto;
+            max-width: 800px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .video-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .video-container {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .video-container:hover {
+            transform: scale(1.03);
+        }
+
+        iframe {
+            border-radius: 8px;
+            width: 100%;
+            max-width: 460px;
+            height: 260px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #eee;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <h1 style="color: white;">TechCon 2025</h1>
+        <div>
+        <a href="index.html">Home</a>
+        <a href="schedule.html">Schedule</a>
+        <a href="speakers.html">Speakers</a>
+        <a href="register.html">Register</a>
+        </div>
+    </nav>
+
+    <section class="intro" data-aos="fade-up">
+        <h3 style="color:blueviolet;">We hope you find these videos helpful in learning about Tech Talks!</h3>
+        <p>At TechCon 2025, we are passionate about sharing insights and inspiration from top industry leaders. Below are selected videos that dive into emerging technologies, innovations, and thought leadership in tech.</p>
+    </section>
+
+    <section class="video-gallery">
+        <div class="video-container" data-aos="zoom-in">
+            <iframe src="https://www.youtube.com/embed/xd2pn9Q5xuA?si=tv6zhZGretwm1TY3"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+        </div>
+
+        <div class="video-container" data-aos="zoom-in" data-aos-delay="200">
+            <iframe src="https://www.youtube.com/embed/I0-TpL7_fes?si=Zfjl1gonvsLM6NeG"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 TechCon. All rights reserved.
+    </footer>
+
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+</html>
